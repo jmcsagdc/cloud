@@ -2,6 +2,8 @@ import os
 
 # INPUT
 
+print "Requires Amazon's aws ec2 CLI tools to function."
+
 # TODO: Make every occurence of keyname here a variable instead of a hardcode
 
 # In the popen, change keyname to the name of your pem file (omit the .pem)
@@ -42,7 +44,7 @@ for i in range (0, len(myData)):
         myYaml += "    role: " + myRoles + "\n"
 
         # Build ssh command
-        sshLine="ssh ubuntu@" + myData[i+1] + " -oStrictHostKeyChecking=no -i ~/.ssh/keyname.pem "  # <--- change to your keyname
+        sshLine="ssh ubuntu@" + myData[i+1] + " -oStrictHostKeyChecking=no -i ~/.ssh/amazon/keyname.pem "  # <--- change to your keyname
         sshLine += "'curl https://releases.rancher.com/install-docker/20.10.sh | sh && sudo usermod -aG docker ubuntu'"
         print "\n"
         print sshLine
